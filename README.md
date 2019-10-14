@@ -46,8 +46,8 @@ Enemies – enemy spaceships
       When Killed, grant +1  firing rate to all ally spaceships. For example, if firing rate is 3 bullets/second, the new firing rate is 4 bullets/second after killing one of these for both spaceships.
 
 Please adjust the number of spaceships need fit to make the game difficult cause I have no idea what would make it hard or easy.
-If the mode is multiplayer, increase the number of spaceships by two-fold.
-Spaceships does not need to be spawned in formations or visual patterns.
+If the mode is multiplayer, increase the number of enemy spaceships by two-fold.
+Enemy spaceships does not need to be spawned in formations or visual patterns.
 
 The game lasts 10 minutes and should be divided into 5 stages, the end of each stage with a wave.
 Each wave should at least have one green bois.
