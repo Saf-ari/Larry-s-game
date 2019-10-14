@@ -7,7 +7,7 @@ The overlay is rectangular portrait mode, with the dimensions somewhat thin. Pla
 	There is no level selection, just one continuous battle which increase in difficulty over time. Spikes in difficulty come when aliens show up in waves, but the waves aren’t distinct. Essentially, similar to Plants versus Zombies, aliens descend continuously, but when there aren’t waves, aliens still descend just in a more sparsely populated pattern.
 	 Spaceships should gain power-ups over time to complement the increasing difficulty.
 	Aliens also fire at you, and there are different classes of aliens that distinguish themselves as tanky ones versus dangerous ones.
-  Background should be mostly dark with some decorations like stars or faint galaxies or planets or asteroids in the background. This design/jpeg should go on a because the level might continue for a long time. The game should extend up to 10 minutes, with the last wave the hardest.
+  Background should be mostly dark with some decorations like stars or faint galaxies or planets or asteroids in the background. This design/jpeg should go on a loop because the level might continue for a long time. The game should extend up to 10 minutes, with the last wave the hardest.
 
 
 Player lives – 3
