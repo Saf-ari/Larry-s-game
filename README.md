@@ -7,7 +7,8 @@ The overlay is rectangular portrait mode, with the dimensions somewhat thin. Pla
 	There is no level selection, just one continuous battle which increase in difficulty over time. Spikes in difficulty come when aliens show up in waves, but the waves aren’t distinct. Essentially, similar to Plants versus Zombies, aliens descend continuously, but when there aren’t waves, aliens still descend just in a more sparsely populated pattern.
 	 Spaceships should gain power-ups over time to complement the increasing difficulty.
 	Aliens also fire at you, and there are different classes of aliens that distinguish themselves as tanky ones versus dangerous ones.
-  Background should be mostly dark with some decorations like stars or faint galaxies or planets or asteroids in the background. This design/jpeg should go on a loop because the level might continue for a long time. The game should extend up to 10 minutes, with the last wave the hardest.
+
+	Background should be mostly dark with some decorations like stars or faint galaxies or planets or asteroids in the background. This design/jpeg should go on a loop because the level might continue for a long time. The game should extend up to 10 minutes, with the last wave the hardest.
 
 
 Player lives – 3
@@ -15,7 +16,7 @@ Player lives – 3
 
   The spaceship gains 3 seconds of invincibility after it loses a life.
 
-  The lives counter should display on the bottom left corner for player one. In the case of multiplayer, player two should be on the bottom left.
+  The lives counter should display on the bottom left corner for player one. In the case of multiplayer, player two should be on the bottom right.
 
   The counter should not be in numbers but hearts; there should be three red hearts on the bottom corners for each player at the start of the game.
 
@@ -23,7 +24,7 @@ Hotkeys – WASD and Arrows(Up,down,left,right)
 
   To fire, player one uses F, and player two uses M
 
-  The spaceships should move relatively fast, faster than the aliens for sure. Within the span of 1 second,the player should be able to move from the left border to the right border of the screen.
+  The spaceships should move relatively fast, faster than the aliens for sure. Within the span of 1 second, the player should be able to move from the left border to the right border of the screen.
 
   The firing rate, at first, shouldn’t be that great – 2 bullets/second.
 
@@ -46,8 +47,8 @@ Enemies – enemy spaceships
       When Killed, grant +1  firing rate to all ally spaceships. For example, if firing rate is 3 bullets/second, the new firing rate is 4 bullets/second after killing one of these for both spaceships.
 
 Please adjust the number of spaceships need fit to make the game difficult cause I have no idea what would make it hard or easy.
-If the mode is multiplayer, increase the number of enemy spaceships by two-fold.
-Enemy spaceships does not need to be spawned in formations or visual patterns.
+If the mode is multiplayer, increase the number of spaceships by two-fold.
+Spaceships does not need to be spawned in formations or visual patterns.
 
 The game lasts 10 minutes and should be divided into 5 stages, the end of each stage with a wave.
 Each wave should at least have one green bois.
