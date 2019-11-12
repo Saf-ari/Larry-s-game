@@ -1,0 +1,412 @@
+
+Information:
+This code relies on sprites for the features(spaceship, aliens, greens) of this game
+No feature is a design assumption
+
+Data Structures:
+maybe arrayList, or maybe array (I forgot the difference between them), for the entities that are currently in the game
+  constantly expands as the aliens and greens spawn
+  and remove dead entities from the arrayList or array idk
+
+Key:
+  Pawn = Regular Pawn
+  Meaty = Big, Meaty Dudes
+  Speedy = Offensive, Fast, and Speedy Bois
+  Aliens = the three above collectively
+  Green = green upgrade carries
+
+Features (listed in order of importance from top being the most important)
+  Spaceship
+    Variables
+      Lives(local)
+        Int that equals 3
+      Rof(global)
+        Int thats equal to 2
+      isHit (local)
+        Boolean: false until hit by projectile which changes hit to true
+    Requirements
+      Movement speed is constant
+      Can move sideways, up, and down (x and y of spaceship both should change)
+      Must be visible and easy to control
+      Points upwards
+      When hit by alien projectile or is touched by alien, loses one life
+      speed = faster than alien speed
+      3 seconds of invincibility after loses a life
+    Difficulties
+      Determining if spaceship gets hit by projectile or alien
+    Functions
+      fire()
+        Spacebar for single player
+        If held down, shoot based on rof bullets per 1 second
+        If tapped, shoot once
+      moveUp()
+        “W” for single player
+        If “W” is pressed/held, then move spaceship up based on speed = length of screen/5 seconds until the key is released
+      moveDown()
+        “S” for single player
+        If “S” is pressed/held, then move spaceship down based on speed = length of screen/5 seconds until the key is released
+      moveRight()
+        “D” for single player
+        If “D” is pressed/held, then move spaceship to the right based on speed = length of screen/5 seconds until the key is released
+      moveLeft()
+        “A” for single player
+        If “A” is pressed/held, then move spaceship to the left based on speed = length of screen/5 seconds until the key is released
+      hitDetector()
+        Detects if hit by a projectile or touched by alien, if hit, then isHit = true, go to loseLife()
+      loseLife()
+        Happens only when isHit == true
+        After three seconds, set isHit = false
+        Lives--;
+        If lives == 0, then go to die()
+      die()
+        Ends the game
+  Regular Pawns
+    Variables
+      pawnLives (global)
+        Int 2 + waveNum
+      isHit (local)
+        Boolean: false, unless hit which is true
+    Requirements
+      Is an alien enemy
+      Doesn’t fire
+      Base lives = Three
+      If hit by spaceship projectile, loses one life
+      Can’t move horizontally
+      Vertical speed = screen length per 15 seconds
+      Appear randomly
+      More appear during and after waves increase
+    Difficulties
+      Determining if alien gets hit by projectile
+    Functions
+      moveDown()
+        Moves down at the speed of screen length per 15 seconds
+      hitDetector()
+        Detects if hit, if hit, then isHit = true, go to loseLife()
+      loseLife()
+        Occurs only when isHit == true
+        Lives--
+        set isHit = false
+        If lives == 0, then go to die()
+      die()
+        Alien disappears
+  Big, Meaty Dudes
+    Variables
+      meatyLives (global)
+      Int 8 + waveNum
+      Rof (local)
+      Int thats equal to 10
+      isHit (local)
+      Boolean: false, unless hit which is true
+      Requirements
+      Is an alien enemy
+      Fire rate = 1 bullet/10 seconds
+      Larger than regular pawns
+      Base lives = 9
+      If hit by spaceship projectile, loses one life
+      Can’t move horizontally
+      Vertical speed = screen length per 15 seconds
+      Appear randomly
+      More appear during and after waves increase
+    Difficulties
+      Determining if alien gets hit by projectile
+    Functions
+      fire()
+        Fire constantly at the rate of 1 bullet/rof seconds
+      moveDown()
+        Moves down at the speed of screen length per 15 seconds
+      hitDetector()
+        Detects if hit, if hit, then isHit = true, go to loseLife()
+      loseLife()
+        Occurs only when isHit == true
+        Lives--
+        set isHit = false
+        If lives == 0, then go to die()
+      die()
+        Alien disappears
+  Offensive, fast, and speedy bois
+    Variables
+      speedyLives (global)
+        Int 1 + waveNum
+      Rof (local)
+        Int thats equal to 4
+      isHit (local)
+        Boolean: false, unless hit which is true
+    Requirements
+      Is an alien enemy
+      Fire rate = 1 bullet / 4 seconds
+      Base lives = 2
+      If hit by spaceship projectile, lose one life
+      Same size as regular pawns
+      Can move left and right
+      Horizontal speed = screen width/ 10 seconds
+      Vertical speed = 25% faster than pawns
+      Appear randomly
+      More appear during and after waves increase
+    Difficulties
+      Determining if alien gets hit by projectile
+    Functions
+      fire()
+        Fire constantly at the rate of 1 bullet/ rof seconds
+      moveRight()
+        Time = int with random number between 1 to 5
+        Move right at the speed of screen width/10 seconds for time seconds
+        within this function make another function that constantly checks if Game Borders variable atSide == true
+          if atSide == true, go to moveLeft()
+        Go to moveLeft()
+      moveLeft()
+        Time = int with random number between 1 to 5
+        Move left at the speed of screen width/10 seconds for time seconds
+        within this function make another function that constantly checks if Game Borders variable atSide == true
+          if atSide == true, go to moveRight()
+        Go to moveRight()
+      moveDown()
+        Moves down at the speed of screen length per 11.25 seconds
+      hitDetector()
+        Detects if hit, if hit, then isHit = true, go to loseLife()
+      loseLife()
+        Occurs only when isHit == true
+        Lives--
+        set isHit = false
+        If lives == 0, then go to die()
+      die()
+        Alien disappears
+  Green upgrade carriers
+    Variables
+      greenLives (local)
+        Int thats equal to 5
+      isHit (local)
+        Boolean: false, unless hit which is true
+    Requirements
+      can’t fire
+      5 lives
+      If hit by spaceship projectile, lose one life
+      Can move left and right
+      Vertical speed = screen length per 15 seconds
+      Horizontal speed = screen width/10 seconds
+      When killed, increases all non-alien spaceships’ fire rates by 1
+      Appear randomly
+      More appear during and after waves increase
+      Difficulties
+      Determining if it gets hit by projectile
+    Functions
+      moveRight()
+        Time = int with random number between 1 to 5
+        Move right at the speed of screen width/10 seconds for time seconds
+        within this function make another function that constantly checks if Game Borders variable atSide == true
+          if atSide == true, go to moveLeft()
+        Go to moveLeft()
+      moveLeft()
+        Time = int with random number between 1 to 5
+        Move left at the speed of screen width/10 seconds for time seconds
+        within this function make another function that constantly checks if Game Borders variable atSide == true
+          if atSide == true, go to moveRight()
+        Go to moveRight()
+      moveDown()
+        Moves down at the speed of screen length per 11.25 seconds
+      hitDetector()
+        Detects if hit, if hit, then isHit = true, go to loseLife()
+        set isHit = false
+      loseLife()
+        Occurs only when isHit == true
+        Lives--
+        If lives == 0, then go to die()
+      die()
+        green disappears
+        all non-alien spaceships’ rof ++
+  Stages
+    Variables
+      stageNum (local)
+        Int that equals 1
+      pawnNum (local)
+        int
+      meatyNum (local)
+        int
+      speedyNum (local)
+        int
+      greenNum (local)
+        int
+      Time (local)
+        Int that equals 120
+    Requirements
+      Total of 5 in a game that is about 10 minutes
+      At the end, wave of enemies
+      Increased difficulty as stageNum progresses
+      More aliens and green carriers as stageNum progresses
+    Difficulties
+      none
+    Functions
+      spawnPawn()
+        Sets random number(based on stageNum) for pawnNum and spawns pawns evenly throughout the time at random coordinates where the alien appears along anywhere along the top border
+      spawnMeaty()
+        Sets random number(based on stageNum) for meatyNum and spawns meaties evenly throughout the time at random coordinates where the aliens appear anywhere along the top border
+      spawnSpeedy()
+        Sets random number(based on stageNum) for speedyNum and spawns speedies evenly throughout the time at random coordinates where the aliens appear anywhere along the top border
+      spawnGreen()
+        Sets random number(based on stageNum) for greenNum and spawns greens evenly throughout the time at random coordinates where the aliens appear anywhere along the top border
+      countdown()
+        Every one second, time--
+        When time == 0, go to timeUp()
+      timeUp()
+        If time reaches zero, then start wave
+      stageUp()
+        stageNum++;
+        If stageNum == 5, go to finishGame()
+        Time = 120
+        Wait 5 seconds, and then start the next stage with the new stageNum
+      finishGame()
+        Game is finished
+        Stops all functions and displays a “Congrats” page or something like that
+  Waves
+    Variables
+      waveNum (local)
+        Int that equals 1
+      numPawn (local)
+        int
+      numMeaty (local)
+        int
+      numSpeedy (local)
+        int
+      numGreen (local)
+        int
+      isDead (local)
+        Boolean: true when all aliens died, false when aliens still alive
+    Requirements
+      At least have one green upgrade carriers
+      Exponentially harder as games waveNum increases
+      More aliens
+      As waveNum increases by one, increase health of all enemy aliens by 1
+    Difficulties
+      none
+    Functions
+      spawnPawn()
+        Sets random number(based on waveNum) for numPawn and spawns pawns evenly within 10 seconds at random coordinates where the aliens appears along anywhere along the top border
+      spawnMeaty()
+        Sets random number(based on waveNum) for numMeaty and spawns meaties evenly within 10 seconds at random coordinates where the aliens appear anywhere along the top border
+      spawnSpeedy()
+        Sets random number(based on waveNum) for numSpeedy and spawns Speedies evenly within 10 seconds at random coordinates where the aliens appear anywhere along the top border
+      spawnGreen()
+        Sets random number(based on waveNum) for numGreen and spawns Greens evenly within 10 seconds at random coordinates where the greens appear anywhere along the top borde
+      waveUp()
+        If isDead == true (meaning all aliens are dead), then waveNum++, all alien lives++, go to stageUp()
+  Game Borders
+    Variables
+      counter (local)
+        int that is set to 0
+      atSide (global)
+        boolean: false, until something touches side borders which sets this to true
+      isCross (local)
+        Boolean: false, until something crosses bottom border which sets this to true
+    Requirements
+      program the borders of the game so that the every time an alien crosses the bottom border, then the value of counter goes up
+      however if the green passes the bottom border then they will just disappear just like the alien, but the counter value does not go up
+      if the aliens or greens hit the side border, than they just bounce off them Off
+      if the counter reaches 6, then the game ends and the player loses
+    Difficulties
+      determining what the counter value should be because the difficulty cannot be predicted merely just by pseudocode
+    Functions
+      crossDetector()
+        determines if the bottom border is crossed
+        sets isCross to true
+        if (isCross == true)
+          check what crossed the border (alien or green?)
+          if (alien crossed)
+            counter++;
+          set isCross back to false;
+      sideDetector()
+        determines if the side border is touched
+        constantly checking if something is touching the side borders
+        sets atSide to true
+        (basically when anything touches the side border there moveLeft or moveRight function ends and immediately switches to moveRight or moveLeft respectively)
+      endGame()
+        if (counter == 6 and gameMode == single player || counter == 12 and gameMode == multiplayer)
+          lose game title screen
+  Multiplayer (FYI: Any functions’ or variables’ names that end with “Two” refers to the functions or variables of player two. Any functions’ or variables’ names that end without “Two” refers to the functions or variables of player one)
+    Variables
+      Lives (local)
+        Int that equals 3
+      Rof (local)
+        Int thats equal to 2
+      isHit (local)
+        Boolean: false until hit by projectile which changes hit to true
+      LivesTwo (local)
+        Int that equals 3
+      RofTwo (local)
+        Int thats equal to 2
+      isHitTwo (local)
+        Boolean: false until hit by projectile which changes hit to true
+    Requirements
+      Same screen
+      Player 1 and player 2 spaceships must be distinguishable
+      Difficulties
+      If aliens and green upgrade carriers get hit at the same time by both players, they detect that it got hit twice
+    Functions
+      fire()
+        “F” for player one
+        If held down, shoot based on rof bullets per 1 second
+        If tapped, shoot once
+      moveUp()
+        “W” for player one
+        If “W” is pressed/held, then move spaceship up based on speed = length of screen/5 seconds until the key is released
+      moveDown()
+        “S” for single player
+        If “S” is pressed/held, then move spaceship down based on speed = length of screen/5 seconds until the key is released
+      moveRight()
+        “D” for single player
+        If “D” is pressed/held, then move spaceship to the right based on speed = length of screen/5 seconds until the key is released
+      moveLeft()
+        “A” for single player
+        If “A” is pressed/held, then move spaceship to the left based on speed = length of screen/5 seconds until the key is released
+      hitDetector()
+        Detects if hit or touched by aliens, if hit, then isHit = true, go to loseLife()
+      loseLife()
+        Happens only when isHit == true
+        After three seconds, set isHit = false
+        Lives--;
+        If lives == 0, then go to die()
+      die()
+        playerOne dissapears and playerTwo plays on
+        if playerTwo is already dead, then lose screen
+      fireTwo()
+        “M” for player two
+        If “M” held down, shoot based on rof bullets per 1 second
+        If tapped, shoot once
+      moveUpTwo()
+        Up arrow key for player two
+        If Up arrow key is pressed/held, then move spaceship up based on speed = length of screen/5 seconds until the key is released
+      moveDownTwo()
+        Bottom arrow key for player two
+        If Bottom arrow key is pressed/held, then move spaceship down based on speed = length of screen/5 seconds until the key is released
+      moveRightTwo()
+        Right arrow key for player two
+        If Right arrow key is pressed/held, then move spaceship right based on speed = width of screen/5 seconds until the key is released
+      moveLeftTwo()
+        Left arrow key for player two
+        If Left arrow key is pressed/held, then move spaceship left based on speed = width of screen/5 seconds until the key is released
+      hitDetectorTwo()
+        Detects if hit or touched by aliens, if hit, then isHit = true, go to loseLifeTwo()
+      loseLifeTwo()
+        Happens only when isHitTwo == true
+        After three seconds, set isHitTwo == false
+        LivesTwo--;
+        If livesTwo == 0, then go to dieTwo()
+      dieTwo()
+        playerTwo dissapears and playerOne plays on
+        if playerOne is already dead, then lose screen
+  Background
+    Variables
+      Speed (local)
+        int
+    Requirements
+      Have stars and planets that move downwards and don’t interfere with gameplay
+    Difficulties
+      none
+    Functions
+      move()
+        The background with stars and planets move downwards at the rate of length of screen / speed seconds
+
+
+Feasibility Analysis:
+	The spaceship, aliens, and greens will be the hardest code due to the sheer amount of variables and functions. Projectiles must be animated and recognize what it hits, which would be the hardest to design. It is hard to determine how much time must be committed to program these features because it depends on how long it will take to figure out projectile contact. My best guess for the spaceship would be anywhere between a day to a week. Since the aliens and greens are related to the spaceship, so it will probably take a day to program after spaceship is complete. Additionally, the aliens and greens are very closely related to each other, so once one alien is finished being programmed, the rest should be able to be completed within a day. One technical issue with this program is that the creator of this game didn’t specify what should happen to the spaceship, aliens, and greens when they reach a border of the game window. Basically, the function, hitDetector, will be the hardest to program and should be reviewed.
+
+Priority Analysis:
+	The spaceship should take priority because it is what the player will be controlling; Without this feature, this wouldn’t even be a game. Also, the spaceship’s code will be the base for aliens and greens. Next, pawns are second because it represents the simplest objective of this game: to kill aliens. It is also the easiest alien to program. In order for us to program other aliens, we must know how to program this first. Also, we can test the actual gameplay using this alien. If it fails, it’s not a big deal since this would have the shortest program of all the aliens. It makes sense to program from simple to complex. Meaties are third because they are the next simplest alien. The only difference between this and the pawn is that this can shoot, has more lives, and is physically larger. Speedies are fourth because it is the last and most complex alien. This has the ability to move sideways in addition to moving downwards. Green comes after even though it is less complex than speedies. However, it makes more sense to finish the aliens first since we would have already started programming them. Also, the aliens represent the primary objective of this game. Greens represent the secondary objective, which is to gain a higher rate of fire. Greens are even easier to program than pawns because they don’t shoot and don’t inflict damage on the spaceship upon contact. This just has the added function of adding to the non-alien spaceships’ rate of fire by one. Stages are next on the priority list because they are distinguished by their difficulties. Stages rely on aliens and greens because the number of them is what defines the difficulty of a certain stage, making them more important. Waves come after stages, both on the priority list and in the actual game (a wave of enemies occur after a stage ends). There cannot be a wave without a stage, so, clearly, stage is more important. Now, we can start to program multiplayer, since we have actually completed the single player version. In order for there to be a multiplayer version of the game, the single player version of the same game must be finished, since both versions would have the same layout (aliens, greens, stages, waves). Last and least on the priority list is the background. The background is purely for the cosmetics of the game, rather than the actual functionality, thus, making this the least important.
