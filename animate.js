@@ -1,30 +1,14 @@
-/**
-*  handleShipAnimation moves the ship based on its direction and
-*    keyboard control
-*
-*/
-/*function fireBullet()
-{
-  bullets.push(new bullet);
-}
-*/
-function handleBulletAnimation() {
-    BULLET.y -= 1;
-}
+var title = new Image();
+title.src="images/title.png"
+var start = new Image();
+start.src="images/start.png"
+
 
 function handleShipAnimation() {
   if (CONTROLS.ship.forward && !(SPACE_SHIP.y < 3)) {
-    /*var radians = (Math.PI / 180) * SPACE_SHIP.rotation,
-    cos = Math.cos(radians),
-    sin = Math.sin(radians);
-    SPACE_SHIP.x += SPACE_SHIP.speed * sin;*/
     SPACE_SHIP.y -=  SPACE_SHIP.speed;
   }
   if (CONTROLS.ship.backward && !(SPACE_SHIP.y > GAME.canvas.height - 33)) {
-    /*var radians = (Math.PI / 180) * SPACE_SHIP.rotation,
-    cos = Math.cos(radians),
-    sin = Math.sin(radians);
-    SPACE_SHIP.x -= SPACE_SHIP.speed * sin;*/
     SPACE_SHIP.y +=  SPACE_SHIP.speed;
   }
   if (CONTROLS.ship.left && !(SPACE_SHIP.x < 3)) {
@@ -34,57 +18,45 @@ function handleShipAnimation() {
   if (CONTROLS.ship.right && !(SPACE_SHIP.x > GAME.canvas.width - 12)) {
     SPACE_SHIP.x += SPACE_SHIP.speed;
   }
-  /*if (CONTROLS.ship.rotateClockwise) {
-  SPACE_SHIP.rotation -= 4;
-}
-if (CONTROLS.ship.rotateCounterClockwise) {
-SPACE_SHIP.rotation += 4;
-}*/
-
-// Check if asteroid is leaving the boundary, if so, switch sides
-
 }
 
-
-
-function RenderNewObject(context) {
-  //context.fillRect(NEW_OBJECT.x,NEW_OBJECT.y,50,50);
-  // Draw a new item here using the canvas 'context' variable
-}
-
-function HandleNewObjectMovement() {
-
-
-  //NEW_OBJECT.y += 1;
-
-}
 
 
 function runGame() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
   if (GAME.started) {
-
     // 1 - Reposition the objects
     handleShipAnimation();
-    handleBulletAnimation();
-    HandleNewObjectMovement();
-
-    
+    animateBullets();
+    animateBackground();
     animateAssteroids();
-
+    checkObstacleCollision();
+    checkBulletHit();
+    checkRockHit();
     // 2 - Clear the CANVAS
-    context.clearRect(0, 0, 600, 300);
+    context.clearRect(0, 0, 500, 750);
 
     // 3 - Draw new items
+    RenderBackground(context);
     RenderSpaceship(context);
-    RenderBullet(context);
-    RenderNewObject(context);
+    renderBullets(context);
     renderAssteroids(context);
+    renderRocks(context);
+    if(SPACE_SHIP.health = 0) {
+      GAME.started = false;
+    }
+
 
   } else {
-    context.font = "30px Arial";
-    context.fillText("Game Over      Level " + GAME.level, 135, 200);
+    context.fillStyle = "#000000";
+    context.fillRect(0, 0, 500, 750);
+    context.drawImage(title,50,100,400,130);
+    context.drawImage(start,100,500,300,50);
+    if (CONTROLS.fire.active) {
+      SPACE_SHIP.health = 3;
+      GAME.started = true;
+    }
   }
   window.requestAnimationFrame(runGame);
 }

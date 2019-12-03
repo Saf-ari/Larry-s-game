@@ -1,24 +1,19 @@
 var GAME = {
   canvas : {
-    width : 600,
-    height : 300
+    width : 500,
+    height : 750
   },
-  started : true,
+  started : false,
   level : 1,
-  assteroids : []
+  assteroids : [],
+  background: [],
+  bullets: [],
+  rocks: []
 };
 
 var SPACE_SHIP = {
   initialized : false,
   bullets : [],
-  latest : {
-    x : 0,
-    y : 0
-  }
-};
-
-var BULLET = {
-  initialized : false,
   latest : {
     x : 0,
     y : 0

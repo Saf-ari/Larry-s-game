@@ -1,96 +1,40 @@
-function InitializeBullet() {
-  var canvas = document.getElementById('mainCanvas');
-  var context = canvas.getContext('2d');
-  context.scale(1,1);
-  BULLET = {
-    x : 300,
-    y : 150,
-    rotation : 0,
-    health : 3,
-    positions : [
-      {
-        x : 0,
-       	y : 0
-      },
-      {
-        x : 0,
-       	y : 1
-      },
-      {
-        x : 1,
-       	y : 1
-      },
-      {
-        x : 1,
-       	y : 0
-      },
-      {
-        x : 0,
-       	y : 0
-      },
-    ],
-    latest : {
-        y : BULLET.y,
-        x : BULLET.x
-    },
-    scale : 5,
-    speed : 3,
-    initialized : true
-  };
+var bulletImage = new Image();
+bulletImage.src="images/bullet.png"
+
+function addBullet (x,y)
+{
+  SPACE_SHIP.bullets.push(new Bullet(x,y));
 }
 
-// Rotate rotates a point around
-// cx, cy   :   The central point
-// x, y     :   The coordinates of point to be rotatedPoint
-// angle    :   Angle in degrees of rotation
-/*function Rotate(cx, cy, x, y, angle) {
-    var radians = (Math.PI / 180) * angle,
-        cos = Math.cos(radians),
-        sin = Math.sin(radians),
-        nx = (cos * (x - cx)) + (sin * (y - cy)) + cx,
-        ny = (cos * (y - cy)) - (sin * (x - cx)) + cy;
-    return [nx, ny];
-}*/
+function Bullet (x,y)
+{
+  this.x = x;
+  this.y = y;
+}
 
-// RotateAroundOrigin
-// x, y     :   The coordinates of point to be rotatedPoint
-// angle    :   Angle in degrees of rotation
-/*function RotateAroundOrigin(x, y, angle) {
-  return Rotate(0, 0, x, y, angle);
-}*/
-
-/**  RenderSpaceship
- *
- *  Renders all spaceship points after adjusting them for the rotation and position
- *    in space
- */
-function RenderBullet(context){
-  if (!BULLET.initialized) {
-    return;
+function animateBullets() {
+ CONTROLS.fire.lastFireTime--;
+ if (CONTROLS.fire.active == true)
+ {
+   if (CONTROLS.fire.lastFireTime <= 0)
+   {
+     addBullet(SPACE_SHIP.x + 24.5, SPACE_SHIP.y);
+     CONTROLS.fire.lastFireTime = 25;
+   }
+ }
+  for(var i = 0; i < SPACE_SHIP.bullets.length ; i++)
+  {
+    SPACE_SHIP.bullets[i].y -= 4;
+    if(SPACE_SHIP.bullets[i].y<-20) {
+      SPACE_SHIP.bullets.splice(i,1);
+      i--;
+    }
   }
+}
 
-
-  // Move to the point where drawing will start
-
-  context.fillRect(BULLET.x,BULLET.y, 69,69);
-  //context.moveTo(SPACE_SHIP.x + rotatedPoint[0],SPACE_SHIP.y +  rotatedPoint[1]);
-  /*
-  SPACE_SHIP.latest.x = SPACE_SHIP.x + rotatedPoint[0];
-  SPACE_SHIP.latest.y = SPACE_SHIP.y + rotatedPoint[1];
-  */
-  // Begin rendering the space ship points (rotating them each time)
-  /*context.beginPath();
-  for (var i = 0; i < BULLET.positions.length; i++) {
-    var rotatedPoint = RotateAroundOrigin(
-      BULLET.positions[i].x,
-      BULLET.positions[i].y,
-      BULLET.rotation
-    );
-    context.lineTo(
-      BULLET.x,
-      BULLET.y
-    );
+function renderBullets(context) {
+  for(var i = 0; i < SPACE_SHIP.bullets.length; i++)
+  {
+    context.drawImage(bulletImage, SPACE_SHIP.bullets[i].x,SPACE_SHIP.bullets[i].y, 2,8);
   }
-  context.lineWidth = 1;
-  context.stroke();*/
 }

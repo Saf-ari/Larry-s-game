@@ -14,7 +14,6 @@ var CONTROLS = {
     active : false,
     lastFireTime : 0
   }
-
 };
 
 
@@ -22,21 +21,20 @@ document.addEventListener('keydown', function(event) {
   switch (event.key) {
     case "ArrowUp":
 //      CONTROLS.ship.forward = true;
-      CONTROLS.ship.forward = true;
-      break;
-    case "ArrowDown":
+CONTROLS.ship.forward = true;
+break;
+      case "ArrowDown":
       CONTROLS.ship.backward = true;
       break;
-    case "ArrowLeft":
+      case "ArrowLeft":
       CONTROLS.ship.left = true;
       break;
-    case "ArrowRight":
+      case "ArrowRight":
       CONTROLS.ship.right = true;
       break;
-   case "Space":
-      fireBullet();
-      break;
-      
+      case " ":
+      CONTROLS.fire.active = true;
+
 /*    case "ArrowLeft":
       CONTROLS.ship.rotateCounterClockwise = true;
       break;

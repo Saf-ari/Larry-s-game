@@ -6,8 +6,6 @@
  *
  */
 function Start() {
-
   // Initialize Spaceship
   InitializeSpaceship();
-  InitializeBullet();
 }
