@@ -15,32 +15,7 @@ function InitializeSpaceship() {
     y : 500,
     rotation : 0,
     health : 3,
-    positions : [
-      {
-        x : 0,
-       	y : 3
-      },
-      {
-        x : 0,
-       	y : 6
-      },
-      {
-        x : 2,
-       	y : 6
-      },
-      {
-        x : 2,
-       	y : 3
-      },
-      {
-        x : 1,
-       	y : 0
-      },
-      {
-        x : 0,
-        y : 3
-      }
-    ],
+    
     latest : {
         x : SPACE_SHIP.x,
         y : SPACE_SHIP.y,

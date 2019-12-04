@@ -1,4 +1,4 @@
-var title = new Image();
+  var title = new Image();
 title.src="images/title.png"
 var start = new Image();
 start.src="images/start.png"
