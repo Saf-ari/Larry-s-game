@@ -43,7 +43,7 @@ function runGame() {
     renderBullets(context);
     renderAssteroids(context);
     renderRocks(context);
-    if(SPACE_SHIP.health = 0) {
+    if(SPACE_SHIP.health == 0) {
       GAME.started = false;
     }
 
