@@ -43,7 +43,10 @@ function runGame() {
     renderBullets(context);
     renderAssteroids(context);
     renderRocks(context);
-    if(SPACE_SHIP.health = 0) {
+    context.font = "30px Arial";
+  //  canvas.fontColor = "#00ff00";
+    context.fillText("Lives:" + SPACE_SHIP.health, 20, 20);
+    if(SPACE_SHIP.health == 0) {
       GAME.started = false;
     }
 
