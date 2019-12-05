@@ -30,7 +30,7 @@ function runGame() {
     handleShipAnimation();
     animateBullets();
     animateBackground();
-    animateAssteroids();
+    animateAsteroids();
     checkObstacleCollision();
     checkBulletHit();
     checkRockHit();
@@ -41,7 +41,7 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
-    renderAssteroids(context);
+    renderAsteroids(context);
     renderRocks(context);
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
