@@ -7,7 +7,7 @@ rockImage.src="images/rock.png"
 var lifeImage = new Image();
 lifeImage.src = "images/heart.png"
 
-function addAssteroid (type,x,y,health)
+function addAsteroid (type,x,y,health)
 {
   GAME.asteroids.push(new Asteroid(type,x,y,health));
 }
