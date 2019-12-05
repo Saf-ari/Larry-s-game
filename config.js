@@ -5,17 +5,16 @@ var GAME = {
   },
   started : false,
   level : 1,
-  asteroids : [],
+  aliens : [],
   background: [],
-  bullets: [],
   rocks: []
 };
 
 var SPACE_SHIP = {
   initialized : false,
   bullets : [],
-    x : 0,
-    y : 0
+  x : 0,
+  y : 0
 };
 
 var NEW_OBJECT = {
