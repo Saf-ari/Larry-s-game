@@ -14,10 +14,8 @@ var GAME = {
 var SPACE_SHIP = {
   initialized : false,
   bullets : [],
-  latest : {
     x : 0,
     y : 0
-  }
 };
 
 var NEW_OBJECT = {
