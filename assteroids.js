@@ -5,7 +5,7 @@ var rockImage = new Image();
 rockImage.src="images/rock.png"
 
 var lifeImage = new Image();
-lifeImage.src = "images/rock.png"
+lifeImage.src = "images/heart.png"
 
 function addAssteroid (type,x,y,health)
 {
