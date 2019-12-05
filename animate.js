@@ -30,7 +30,7 @@ function runGame() {
     handleShipAnimation();
     animateBullets();
     animateBackground();
-    animateAssteroids();
+    animateAsteroids();
     checkObstacleCollision();
     checkBulletHit();
     checkRockHit();
@@ -41,7 +41,7 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
-    renderAssteroids(context);
+    renderAsteroids(context);
     renderRocks(context);
     renderLives(context);
     if(SPACE_SHIP.health == 0) {
@@ -57,6 +57,7 @@ function runGame() {
     if (CONTROLS.fire.active) {
       SPACE_SHIP.health = 3;
       GAME.started = true;
+      GAME.rocks = [];
     }
   }
   window.requestAnimationFrame(runGame);

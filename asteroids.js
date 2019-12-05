@@ -9,7 +9,7 @@ lifeImage.src = "images/heart.png"
 
 function addAssteroid (type,x,y,health)
 {
-  GAME.assteroids.push(new Assteroid(type,x,y,health));
+  GAME.asteroids.push(new Asteroid(type,x,y,health));
 }
 
 function addRock (x,y,horizontalSpeed,verticalSpeed)
@@ -24,7 +24,7 @@ function Rock(x,y,horizontalSpeed, verticalSpeed) {
   this.verticalSpeed = verticalSpeed;
 }
 
-function Assteroid (type, x,y, health){
+function Asteroid (type, x,y, health){
   this.type = type;
   this.x = x;
   this.y = y;
@@ -41,7 +41,7 @@ var fighterTimer=300;
 var speedyTimer=1200;
 var rockTimer=100;
 
-function animateAssteroids() {
+function animateAsteroids() {
   if(rockTimer< 0&& getRandomInt(10)==4) {
       var newX;
       if(getRandomInt(2) == 1) {
@@ -66,14 +66,14 @@ function animateAssteroids() {
 
   if(fighterTimer<0){
     if(getRandomInt(10)==4) {
-      addAssteroid("fighter",Math.random()*(GAME.canvas.width -100) + 50, -20, 1);
+      addAsteroid("fighter",Math.random()*(GAME.canvas.width -100) + 50, -20, 1);
       fighterTimer=90;
     }
   }
   fighterTimer--;
   if(speedyTimer<0){
     if(getRandomInt(10)==4) {
-      addAssteroid("speedy", Math.random()*(GAME.canvas.width -200) + 100, -20, 0);
+      addAsteroid("speedy", Math.random()*(GAME.canvas.width -200) + 100, -20, 0);
       speedyTimer=400;
     }
   }
@@ -88,33 +88,33 @@ function animateAssteroids() {
     }
   }
 
-  for (var i = 0; i<GAME.assteroids.length; i++){
-    GAME.assteroids[i].y+=1;
-    if(GAME.assteroids[i].type == "speedy") {
-      if(GAME.assteroids[i].positive) {
-      GAME.assteroids[i].horizontalSpeed+=1;
+  for (var i = 0; i<GAME.asteroids.length; i++){
+    GAME.asteroids[i].y+=1;
+    if(GAME.asteroids[i].type == "speedy") {
+      if(GAME.asteroids[i].positive) {
+      GAME.asteroids[i].horizontalSpeed+=1;
     }
-    if(!GAME.assteroids[i].positive) {
-      GAME.assteroids[i].horizontalSpeed-=1;
+    if(!GAME.asteroids[i].positive) {
+      GAME.asteroids[i].horizontalSpeed-=1;
     }
-    if(GAME.assteroids[i].horizontalSpeed< -20) {
-      GAME.assteroids[i].positive = true;
+    if(GAME.asteroids[i].horizontalSpeed< -20) {
+      GAME.asteroids[i].positive = true;
     }
-    if(GAME.assteroids[i].horizontalSpeed> 20) {
-      GAME.assteroids[i].positive= false;
+    if(GAME.asteroids[i].horizontalSpeed> 20) {
+      GAME.asteroids[i].positive= false;
     }
-    GAME.assteroids[i].x+=GAME.assteroids[i].horizontalSpeed
+    GAME.asteroids[i].x+=GAME.asteroids[i].horizontalSpeed
   }
-    if(GAME.assteroids[i].y>GAME.canvas.height){
-      GAME.assteroids.splice(i,1);
+    if(GAME.asteroids[i].y>GAME.canvas.height){
+      GAME.asteroids.splice(i,1);
       i--;
     }
   }
 }
 
-function renderAssteroids(context) {
-  for(var i= 0; i< GAME.assteroids.length;i++) {
-    context.drawImage(alienImage, GAME.assteroids[i].x,GAME.assteroids[i].y, 30,30);
+function renderAsteroids(context) {
+  for(var i= 0; i< GAME.asteroids.length;i++) {
+    context.drawImage(alienImage, GAME.asteroids[i].x,GAME.asteroids[i].y, 30,30);
   }
 }
 
@@ -145,14 +145,14 @@ function renderLives(context){
 
 
 function checkObstacleCollision() {
-  for(var i = 0; i < GAME.assteroids.length; i++) {
+  for(var i = 0; i < GAME.asteroids.length; i++) {
   //If the obstacle collides with the player, it is removed from the array and the player
   //loses one (1) health point.
-    if (GAME.assteroids[i].x < SPACE_SHIP.x + 50 && GAME.assteroids[i].x + 30 >
-      SPACE_SHIP.x && GAME.assteroids[i].y < SPACE_SHIP.y + 40 &&
-      GAME.assteroids[i].y + 30 > SPACE_SHIP.y) {
+    if (GAME.asteroids[i].x < SPACE_SHIP.x + 50 && GAME.asteroids[i].x + 30 >
+      SPACE_SHIP.x && GAME.asteroids[i].y < SPACE_SHIP.y + 40 &&
+      GAME.asteroids[i].y + 30 > SPACE_SHIP.y) {
       SPACE_SHIP.health--;
-        GAME.assteroids.splice(i,1);
+        GAME.asteroids.splice(i,1);
         i--;
 
       }
@@ -160,14 +160,14 @@ function checkObstacleCollision() {
   }
 
   function checkBulletHit() {
-    for(var i = 0; i < GAME.assteroids.length; i++) {
+    for(var i = 0; i < GAME.asteroids.length; i++) {
       for(var j = 0; j < SPACE_SHIP.bullets.length; j++) {
-        if(GAME.assteroids[i].x < SPACE_SHIP.bullets[j].x + 10 && GAME.assteroids[i].x + 30 > SPACE_SHIP.bullets[j].x && GAME.assteroids[i].y < SPACE_SHIP.bullets[j].y +20 && GAME.assteroids[i].y + 30 > SPACE_SHIP.bullets[j].y) {
-          if(GAME.assteroids[i].health>0) {
-            GAME.assteroids[i].health--;
+        if(GAME.asteroids[i].x < SPACE_SHIP.bullets[j].x + 10 && GAME.asteroids[i].x + 30 > SPACE_SHIP.bullets[j].x && GAME.asteroids[i].y < SPACE_SHIP.bullets[j].y +20 && GAME.asteroids[i].y + 30 > SPACE_SHIP.bullets[j].y) {
+          if(GAME.asteroids[i].health>0) {
+            GAME.asteroids[i].health--;
           }
           else {
-            GAME.assteroids.splice(i,1);
+            GAME.asteroids.splice(i,1);
             i--;
             GAME.score++;
           }
