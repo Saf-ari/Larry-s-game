@@ -1,4 +1,4 @@
-var title = new Image();
+  var title = new Image();
 title.src="images/title.png"
 var start = new Image();
 start.src="images/start.png"
@@ -43,6 +43,9 @@ function runGame() {
     renderBullets(context);
     renderAsteroids(context);
     renderRocks(context);
+    context.font = "30px Arial";
+    context.fillStyle = "blue";
+    context.fillText("Lives:" + SPACE_SHIP.health, 20, 20);
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
     }
