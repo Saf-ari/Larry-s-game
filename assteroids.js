@@ -4,6 +4,9 @@ alienImage.src="images/alien.png"
 var rockImage = new Image();
 rockImage.src="images/rock.png"
 
+var lifeImage = new Image();
+lifeImage.src = "images/rock.png"
+
 function addAssteroid (type,x,y,health)
 {
   GAME.assteroids.push(new Assteroid(type,x,y,health));
@@ -129,9 +132,18 @@ function checkRockHit() {
         SPACE_SHIP.health--;
         GAME.rocks.splice(i,1);
         i--;
+        GAME.score ++;
       }
     }
 }
+
+function renderLives(context){
+  for (var i = 0; i < SPACE_SHIP.health; i ++){
+    context.drawImage( lifeImage, i*20+10,5,20,20);
+  }
+}
+
+
 function checkObstacleCollision() {
   for(var i = 0; i < GAME.assteroids.length; i++) {
   //If the obstacle collides with the player, it is removed from the array and the player
@@ -142,6 +154,7 @@ function checkObstacleCollision() {
       SPACE_SHIP.health--;
         GAME.assteroids.splice(i,1);
         i--;
+
       }
     }
   }
@@ -156,6 +169,7 @@ function checkObstacleCollision() {
           else {
             GAME.assteroids.splice(i,1);
             i--;
+            GAME.score++;
           }
           SPACE_SHIP.bullets.splice(j,1);
           break;

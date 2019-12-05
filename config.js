@@ -5,6 +5,7 @@ var GAME = {
   },
   started : false,
   level : 1,
+  score : 0,
   assteroids : [],
   background: [],
   bullets: [],
