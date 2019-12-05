@@ -15,11 +15,6 @@ function InitializeSpaceship() {
     y : 500,
     rotation : 0,
     health : 3,
-
-    latest : {
-        x : SPACE_SHIP.x,
-        y : SPACE_SHIP.y,
-    },
     scale : 5,
     speed : 3,
     initialized : true,

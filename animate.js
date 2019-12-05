@@ -59,6 +59,7 @@ function runGame() {
     if (CONTROLS.fire.active) {
       SPACE_SHIP.health = 3;
       GAME.started = true;
+      GAME.rocks = [];
     }
   }
   window.requestAnimationFrame(runGame);
