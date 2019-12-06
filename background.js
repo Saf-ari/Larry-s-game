@@ -11,24 +11,10 @@ function Background (x,y)
   this.x = x;
   this.y = y;
 }
-var backgroundAddTimer = 275
+var backgroundAddTimer = 275;
 
 function animateBackground ()
 {
-  /*
-  if(backgroundAddTimer==0){
-    addBackground(0, -600);
-    backgroundAddTimer=300;
-  }
-  backgroundAddTimer--;
-  GAME.background[0].y+=0.5;
-  for (var i = 0; i<GAME.background.length; i++){
-     GAME.background[i].y+=0.5;
-    if(GAME.background[i].y>GAME.canvas.height){
-      GAME.background.shift();
-    }
-  }
-  */
   for(var i = 0; i < GAME.background.length; i++) {
     GAME.background[i].y+=0.5;
     if(GAME.background[i].y>GAME.canvas.height){

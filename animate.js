@@ -30,7 +30,7 @@ function runGame() {
     handleShipAnimation();
     animateBullets();
     animateBackground();
-    animateAssteroids();
+    animateAsteroids();
     checkObstacleCollision();
     checkBulletHit();
     checkRockHit();
@@ -41,11 +41,9 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
-    renderAssteroids(context);
+    renderAsteroids(context);
     renderRocks(context);
-    context.font = "30px Arial";
-    context.fillStyle = "blue";
-    context.fillText("Lives:" + SPACE_SHIP.health, 20, 20);
+    renderLives(context);
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
     }
@@ -59,6 +57,7 @@ function runGame() {
     if (CONTROLS.fire.active) {
       SPACE_SHIP.health = 3;
       GAME.started = true;
+      GAME.rocks = [];
     }
   }
   window.requestAnimationFrame(runGame);
