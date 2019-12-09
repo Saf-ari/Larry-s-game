@@ -7,7 +7,7 @@ rockImage.src="images/rock.png"
 var lifeImage = new Image();
 lifeImage.src = "images/heart.png"
 
-function addAlien (type,x,y,health);
+function addAlien (type,x,y,health)
 {
   GAME.aliens.push(new Alien(type,x,y,health));
 }

@@ -41,7 +41,7 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
-    renderAsteroids(context);
+    renderAliens(context);
     renderRocks(context);
     renderLives(context);
     if(SPACE_SHIP.health == 0) {
