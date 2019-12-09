@@ -30,7 +30,7 @@ function runGame() {
     handleShipAnimation();
     animateBullets();
     animateBackground();
-    animateAsteroids();
+    animateAliens();
     checkObstacleCollision();
     checkBulletHit();
     checkRockHit();
