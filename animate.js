@@ -25,6 +25,9 @@ function handleShipAnimation() {
 function runGame() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
+  if (GAME.score > document.cookie){
+      document.cookie = GAME.score;
+    }
   if (GAME.started) {
     // 1 - Reposition the objects
     handleShipAnimation();
@@ -44,8 +47,10 @@ function runGame() {
     renderAliens(context);
     renderRocks(context);
     renderLives(context);
+    renderScore (context);
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
+      GAME.score = 0;
     }
 
 

@@ -132,7 +132,7 @@ function checkRockHit() {
         SPACE_SHIP.health--;
         GAME.rocks.splice(i,1);
         i--;
-        GAME.score ++;
+      
       }
     }
 }
@@ -167,12 +167,13 @@ function checkObstacleCollision() {
             GAME.aliens[i].health--;
           }
           else {
+            GAME.score++;
             GAME.aliens.splice(i,1);
             i--;
-            GAME.score++;
           }
           SPACE_SHIP.bullets.splice(j,1);
           break;
+
     }
   }
 }
