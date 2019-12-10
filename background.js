@@ -26,7 +26,7 @@ function animateBackground ()
 }
 
 function renderScore(context){
-  context.fillStyle = 'blue';
+  context.fillStyle = 'red';
   context.fillText ("Score: " + GAME.score, 450, 10);
   context.fillText ("High Score: " + document.cookie, 430, 20)
 }
