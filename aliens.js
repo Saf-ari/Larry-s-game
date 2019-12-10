@@ -7,6 +7,15 @@ rockImage.src="images/rock.png"
 var lifeImage = new Image();
 lifeImage.src = "images/heart.png"
 
+var healthImage = new Image();
+healthImage.src = "images/heart.png"
+
+var shieldImage = new Image();
+shieldImage.src = "images/heart.png"
+
+var fireRateImage = new Image();
+fireRateImage.src = "images/heart.png"
+
 function addAlien (type,x,y,health)
 {
   GAME.aliens.push(new Alien(type,x,y,health));
@@ -17,11 +26,21 @@ function addRock (x,y,horizontalSpeed,verticalSpeed)
   GAME.rocks.push(new Rock(x,y,horizontalSpeed,verticalSpeed));
 }
 
+function addPowerUp (type,x,y){
+  GAME.powerUps.push(new PowerUp(type,x,y));
+}
+
 function Rock(x,y,horizontalSpeed, verticalSpeed) {
   this.x = x;
   this.y =y;
   this.horizontalSpeed = horizontalSpeed;
   this.verticalSpeed = verticalSpeed;
+}
+
+function PowerUp(type,x,y){
+  this.type = type;
+  this.x = x;
+  this.y = y;
 }
 
 function Alien (type, x,y, health){
@@ -112,6 +131,33 @@ function animateAliens() {
   }
 }
 
+
+function spawnPowerUp (x,y){
+  var ran = Math.random()*3 + 1
+  if (ran < 1){
+    addPowerUp("fireRate", x, y);
+  }
+  else if (ran < 2){
+    addPowerUp ("health",x,y);
+  } else {
+    addPowerUp ("shield",x,y);
+  }
+}
+
+function renderPowerUps (context){
+  //draw them and then move them down 4
+  for (var i = 0; i < GAME.powerUps.length; i ++){
+    if (GAME.powerUps [i].type == "fireRate"){
+      context.drawImage(fireRateImage, GAME.powerUps[i].x,GAME.powerUps[i].y, 30,30);
+    } else if (GAME.powerUps [i].type == "health"){
+      context.drawImage(healthImage, GAME.powerUps[i].x,GAME.powerUps[i].y, 30,30);
+    } else {
+      context.drawImage(shieldImage, GAME.powerUps[i].x,GAME.powerUps[i].y, 30,30);
+    }
+    GAME.powerUps [i].y += 1;
+  }
+}
+
 function renderAliens(context) {
   for(var i= 0; i< GAME.aliens.length;i++) {
     context.drawImage(alienImage, GAME.aliens[i].x,GAME.aliens[i].y, 30,30);
@@ -132,7 +178,7 @@ function checkRockHit() {
         SPACE_SHIP.health--;
         GAME.rocks.splice(i,1);
         i--;
-      
+
       }
     }
 }
@@ -167,6 +213,10 @@ function checkObstacleCollision() {
             GAME.aliens[i].health--;
           }
           else {
+            var random = Math.random () * 100 + 1;
+            if (random <50){
+              spawnPowerUp(GAME.aliens[i].x,GAME.aliens[i].y);
+            }
             GAME.score++;
             GAME.aliens.splice(i,1);
             i--;

@@ -48,6 +48,7 @@ function runGame() {
     renderRocks(context);
     renderLives(context);
     renderScore (context);
+    renderPowerUps(context);
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
       GAME.score = 0;

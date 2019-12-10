@@ -8,7 +8,8 @@ var GAME = {
   score : 0,
   aliens : [],
   background: [],
-  rocks: []
+  rocks: [],
+  powerUps: []
 };
 
 var SPACE_SHIP = {
