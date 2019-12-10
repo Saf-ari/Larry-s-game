@@ -4,13 +4,16 @@ alienImage.src="images/alien.png"
 var rockImage = new Image();
 rockImage.src="images/rock.png"
 
+<<<<<<< Updated upstream:asteroids.js
 function addAlien (type,x,y,health)
 {
+=======
+function addAlien (type,x,y,health){
+>>>>>>> Stashed changes:aliens.js
   GAME.aliens.push(new Alien(type,x,y,health));
 }
 
-function addRock (x,y,horizontalSpeed,verticalSpeed)
-{
+function addRock (x,y,horizontalSpeed,verticalSpeed){
   GAME.rocks.push(new Rock(x,y,horizontalSpeed,verticalSpeed));
 }
 
@@ -36,10 +39,10 @@ function getRandomInt(max) {
 
 var fighterTimer=300;
 var speedyTimer=1200;
-var rockTimer=100;
+var alienTimer=100;
 
 function animateAliens() {
-  if(rockTimer< 0&& getRandomInt(10)==4) {
+  if(alienTimer< 0 && getRandomInt(10)==4) {
       var newX;
       if(getRandomInt(2) == 1) {
         newX = -20;
@@ -56,10 +59,10 @@ function animateAliens() {
       if(newY >250) {
         newVertical = -newVertical;
       }
-      addRock(newX,newY,newHorizontal,newVertical);
-      rockTimer = 100;
+      addAlien(newX,newY,newHorizontal,newVertical);
+      alienTimer = 100;
   }
-  rockTimer--;
+  alienTimer--;
 
   if(fighterTimer<0){
     if(getRandomInt(10)==4) {
@@ -76,12 +79,12 @@ function animateAliens() {
   }
   speedyTimer--;
 
-  for(var i = 0; i< GAME.rocks.length; i++) {
-     GAME.rocks[i].x += GAME.rocks[i].horizontalSpeed;
-     GAME.rocks[i].y += GAME.rocks[i].verticalSpeed;
+  for(var i = 0; i< GAME.aliens.length; i++) {
+     GAME.aliens[i].x += GAME.aliens[i].horizontalSpeed;
+     GAME.aliens[i].y += GAME.aliens[i].verticalSpeed;
 
-    if(GAME.rocks[i].y>GAME.canvas.height|| GAME.rocks[i].x>GAME.canvas.length||GAME.rocks[i].x<-30||GAME.rocks[i]>510) {
-      GAME.rocks.splice(i,1);
+    if(GAME.aliens[i].y>GAME.canvas.height|| GAME.aliens[i].x>GAME.canvas.length||GAME.aliens[i].x<-30||GAME.aliens[i]>510) {
+      GAME.aliens.splice(i,1);
     }
   }
 
@@ -116,8 +119,8 @@ function renderAliens(context) {
 }
 
 function renderRocks(context) {
-  for(var i= 0; i< GAME.rocks.length;i++) {
-    context.drawImage(rockImage, GAME.rocks[i].x,GAME.rocks[i].y, 40,40);
+  for(var i= 0; i< GAME.aliens.length;i++) {
+    context.drawImage(rockImage, GAME.aliens[i].x,GAME.aliens[i].y, 40,40);
   }
 }
 
@@ -127,12 +130,21 @@ function checkRockHit() {
       SPACE_SHIP.x && GAME.rocks[i].y < SPACE_SHIP.y + 52 &&
       GAME.rocks[i].y + 40 > SPACE_SHIP.y) {
         SPACE_SHIP.health--;
+        if (SPACE_SHIP.shieldActive){
+          SPACE_SHIP.shieldActive == false;
+        }
         GAME.rocks.splice(i,1);
         i--;
       }
     }
 }
+<<<<<<< Updated upstream:asteroids.js
 function checkObstacleCollision() {
+=======
+
+
+function checkAlienHit() {
+>>>>>>> Stashed changes:aliens.js
   for(var i = 0; i < GAME.aliens.length; i++) {
   //If the obstacle collides with the player, it is removed from the array and the player
   //loses one (1) health point.
@@ -140,6 +152,9 @@ function checkObstacleCollision() {
       SPACE_SHIP.x && GAME.aliens[i].y < SPACE_SHIP.y + 40 &&
       GAME.aliens[i].y + 30 > SPACE_SHIP.y) {
       SPACE_SHIP.health--;
+      if (SPACE_SHIP.shieldActive){
+        SPACE_SHIP.shieldActive == false;
+      }
         GAME.aliens.splice(i,1);
         i--;
       }

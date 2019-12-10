@@ -33,7 +33,7 @@ function runGame() {
     animateAliens();
     checkObstacleCollision();
     checkBulletHit();
-    checkRockHit();
+    checkAlienHit();
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 500, 750);
 
@@ -41,16 +41,18 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
-    renderAsteroids(context);
     renderRocks(context);
+<<<<<<< Updated upstream
     context.font = "30px Arial";
     context.fillStyle = "blue";
     context.fillText("Lives:" + SPACE_SHIP.health, 20, 20);
+=======
+    renderAliens(context);
+    renderLives(context);
+>>>>>>> Stashed changes
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
     }
-
-
   } else {
     context.fillStyle = "#000000";
     context.fillRect(0, 0, 500, 750);

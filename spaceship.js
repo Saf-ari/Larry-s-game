@@ -10,18 +10,14 @@ function InitializeSpaceship() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
   context.scale(1,1);
-  SPACE_SHIP = {
-    x : 200,
-    y : 500,
-    rotation : 0,
-    health : 3,
-    scale : 5,
-    speed : 3,
-    initialized : true,
-    bullets : []
-  };
+  SPACE_SHIP.x = 200;
+  SPACE_SHIP.y = 500;
+  SPACE_SHIP.health = 3;
+  SPACE_SHIP.speed = 3;
+  SPACE_SHIP.initialized = true;
+  SPACE_SHIP.bullets = [];
+  SPACE_SHIP.shieldActive = false;
 }
-
 // Rotate rotates a point around
 // cx, cy   :   The central point
 // x, y     :   The coordinates of point to be rotatedPoint
