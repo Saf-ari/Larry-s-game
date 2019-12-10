@@ -5,7 +5,8 @@ var GAME = {
   },
   started : false,
   level : 1,
-  assteroids : [],
+  score : 0,
+  asteroids : [],
   background: [],
   bullets: [],
   rocks: []
@@ -14,10 +15,8 @@ var GAME = {
 var SPACE_SHIP = {
   initialized : false,
   bullets : [],
-  latest : {
     x : 0,
     y : 0
-  }
 };
 
 var NEW_OBJECT = {

@@ -1,7 +1,7 @@
 var boosters = new Image();
-var neutral = new Image();
-boosters.src="images/first-player-boosters-pixilart.png"
-neutral.src="images/first-player-neutral-pixilart.png"
+var static = new Image();
+boosters.src="images/rocketBoosting.png";
+static.src="images/rocketStatic.png";
 
 // Populate a global variable for the spaceship
 function InitializeSpaceship() {
@@ -15,11 +15,6 @@ function InitializeSpaceship() {
     y : 500,
     rotation : 0,
     health : 3,
-    
-    latest : {
-        x : SPACE_SHIP.x,
-        y : SPACE_SHIP.y,
-    },
     scale : 5,
     speed : 3,
     initialized : true,
@@ -59,10 +54,10 @@ function RenderSpaceship(context) {
     return;
   }
   if (CONTROLS.ship.forward && !(SPACE_SHIP.y < 3)) {
-    context.drawImage(neutral, SPACE_SHIP.x,SPACE_SHIP.y, 50,52);
+    context.drawImage(boosters, SPACE_SHIP.x,SPACE_SHIP.y, 50,52);
   }
   else {
-    context.drawImage(boosters, SPACE_SHIP.x,SPACE_SHIP.y, 50,40);
+    context.drawImage(static, SPACE_SHIP.x,SPACE_SHIP.y, 50,40);
   }
 
 
