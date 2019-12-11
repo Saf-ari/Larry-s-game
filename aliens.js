@@ -8,13 +8,13 @@ var lifeImage = new Image();
 lifeImage.src = "images/heart.png"
 
 var healthImage = new Image();
-healthImage.src = "images/heart.png"
+healthImage.src = "images/healthPickup.png"
 
 var shieldImage = new Image();
 shieldImage.src = "images/heart.png"
 
 var fireRateImage = new Image();
-fireRateImage.src = "images/heart.png"
+fireRateImage.src = "images/rapidFireBoost.png"
 
 function addAlien (type,x,y,health)
 {
@@ -133,11 +133,10 @@ function animateAliens() {
 
 
 function spawnPowerUp (x,y){
-  var ran = Math.random()*3 + 1
+  var ran = Math.random()*3;
   if (ran < 1){
     addPowerUp("fireRate", x, y);
-  }
-  else if (ran < 2){
+  } else if (ran < 2){
     addPowerUp ("health",x,y);
   } else {
     addPowerUp ("shield",x,y);
@@ -241,6 +240,9 @@ function checkObstacleCollision() {
             //add health
           } else {
              //add shield
+             if (health < 3){}
+              SPACE_SHIP.health ++;
+            }
           }
           GAME.powerUps.splice(i,1);
           i--;
