@@ -13,9 +13,9 @@ function InitializeSpaceship() {
   SPACE_SHIP = {
     x : 200,
     y : 500,
-    rotation : 0,
+
     health : 3,
-    scale : 5,
+
     speed : 3,
     initialized : true,
     bullets : []
