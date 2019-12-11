@@ -1,7 +1,9 @@
   var title = new Image();
-title.src="images/title.png"
+title.src="images/title.png";
 var start = new Image();
-start.src="images/start.png"
+start.src="images/start.png";
+
+
 
 
 function handleShipAnimation() {
