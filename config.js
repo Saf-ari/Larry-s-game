@@ -5,10 +5,12 @@ var GAME = {
   },
   started : false,
   level : 1,
+  score : 0,
   aliens : [],
   background: [],
   rocks: [],
   enemyBullets : []
+  powerUps: []
 };
 
 var SPACE_SHIP = {

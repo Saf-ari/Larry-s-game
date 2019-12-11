@@ -31,6 +31,12 @@ function animateBackground ()
   }
 }
 
+function renderScore(context){
+  context.fillStyle = 'red';
+  context.fillText ("Score: " + GAME.score, 450, 10);
+  context.fillText ("High Score: " + document.cookie, 430, 20)
+}
+
 function RenderBackground(context){
   for(var i= 0; i< GAME.background.length;i++) {
     context.drawImage(image, GAME.background[i].x,GAME.background[i].y, 500,750);
