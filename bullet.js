@@ -14,12 +14,12 @@ function Bullet (x,y)
 
 function animateBullets() {
  CONTROLS.fire.lastFireTime--;
- if (CONTROLS.fire.active == true)
+ if (CONTROLS.fire == true)
  {
    if (CONTROLS.fire.lastFireTime <= 0)
    {
      addBullet(SPACE_SHIP.x + 24.5, SPACE_SHIP.y);
-     CONTROLS.fire.lastFireTime = 25;
+     CONTROLS.fire.lastFireTime = SPACE_SHIP.firingSpeed[2];
    }
  }
   for(var i = 0; i < SPACE_SHIP.bullets.length ; i++)
@@ -35,6 +35,6 @@ function animateBullets() {
 function renderBullets(context) {
   for(var i = 0; i < SPACE_SHIP.bullets.length; i++)
   {
-    context.drawImage(bulletImage, SPACE_SHIP.bullets[i].x,SPACE_SHIP.bullets[i].y, 2,8);
+    context.drawImage(bulletImage, SPACE_SHIP.bullets[i].x, SPACE_SHIP.bullets[i].y, 2, 8);
   }
 }

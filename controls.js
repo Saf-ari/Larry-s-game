@@ -10,15 +10,22 @@ var CONTROLS = {
     rotateClockwise : false,
     rotateCounterClockwise : false
   },
-  fire : false,
+  firing : false,
   lastFireTime : [0, 0, 0, 0],
-  ability : 3,
-  abilityKeys : ["Q", "W", "E", "R"],
-  abilityNames : ["", "rocket launcher", "laser blaster", "rail gun"]
+  weaponKeys : ["Q", "W", "E", "R"],
 };
+
+function weaponSwitchControl(key) {
+  for (var i = 2; i <= 3; i++) {
+    if (key == CONTROLS.weaponKeys[i]) {
+      SPACE_SHIP.currentWeapon = i;
+    }
+  }
+}
 
 
 document.addEventListener('keydown', function(event) {
+  weaponSwitchControl(event.key);
   switch (event.key) {
     case "ArrowUp":
 //      CONTROLS.ship.forward = true;
@@ -38,12 +45,6 @@ document.addEventListener('keydown', function(event) {
       break;
     default:
       break;
-  }
-
-  for (var i = 2; i <= 3; i++) {
-    if (event.key == CONTROLS.abilityKeys[i]) {
-      CONTROLS.ability = i;
-    }
   }
 });
 
@@ -68,3 +69,27 @@ document.addEventListener('keyup', function(event) {
       break;
   }
 });
+
+function fire(weaponNumber) {
+  if (weaponNumber == 3) {
+    LASER.active = false;
+    addBullet(SPACE_SHIP.x + 24.5, SPACE_SHIP.y);
+  } else if (weaponNumber == 2) {
+    LASER.active = true;
+  }
+}
+
+function weaponControl() {
+  for (var i = 2; i <= 3) {
+    CONTROLS.lastFireTime[i]--;
+  }
+
+  if (CONTROLS.firing == true)
+  {
+    if (CONTROLS.lastFireTime[SPACE_SHIP.currentWeapon] <= 0)
+    {
+      fire(SPACE_SHIP.currentWeapon);
+      CONTROLS.lastFireTime[SPACE_SHIP.currentWeapon] = SPACE_SHIP.firingSpeed[SPACE_SHIP.currentWeapon];
+    }
+  }
+}
