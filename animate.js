@@ -37,6 +37,7 @@ function runGame() {
     checkObstacleCollision();
     checkBulletHit();
     checkRockHit();
+    checkPowerUpHit();
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 500, 750);
 

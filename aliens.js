@@ -229,13 +229,19 @@ function checkObstacleCollision() {
   }
 
   function checkPowerUpHit(){
-    for(var i = 0; i < GAME.aliens.length; i++) {
-    //If the obstacle collides with the player, it is removed from the array and the player
-    //loses one (1) health point.
+    for(var i = 0; i < GAME.powerUps.length; i++) {
+    //If the powerUp collides with the player, it is removed from the array and the player
+    //gets the powerup
       if (GAME.powerUps[i].x < SPACE_SHIP.x + 50 && GAME.powerUps[i].x + 30 >
         SPACE_SHIP.x && GAME.powerUps[i].y < SPACE_SHIP.y + 40 &&
         GAME.powerUps[i].y + 30 > SPACE_SHIP.y) {
-          //if powerUps[i].type ==
+          if (GAME.powerUps[i].type == "fireRate"){
+            //shoot faster
+          } else if (GAME.powerUps[i].type == "health") {
+            //add health
+          } else {
+             //add shield
+          }
           GAME.powerUps.splice(i,1);
           i--;
 
