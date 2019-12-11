@@ -6,10 +6,10 @@ var GAME = {
   started : false,
   level : 1,
   score : 0,
-  asteroids : [],
+  aliens : [],
   background: [],
-  bullets: [],
   rocks: [],
+  powerUps: [],
   weaponNames : ["", "Rocket Launcher", "Laser Blaster", "Rail Gun"]
 };
 

@@ -24,15 +24,19 @@ function handleShipAnimation() {
 function runGame() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
+  if (GAME.score > document.cookie){
+      document.cookie = GAME.score;
+    }
   if (GAME.started) {
     // 1 - Reposition the objects
     handleShipAnimation();
     animateBullets();
     animateBackground();
-    animateAsteroids();
+    animateAliens();
     checkObstacleCollision();
     checkBulletHit();
     checkRockHit();
+    checkPowerUpHit();
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 500, 750);
 
@@ -40,11 +44,14 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
-    renderAsteroids(context);
+    renderAliens(context);
     renderRocks(context);
     renderLives(context);
+    renderScore (context);
+    renderPowerUps(context);
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
+      GAME.score = 0;
     }
 
 
