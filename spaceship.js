@@ -1,7 +1,11 @@
 var boosters = new Image();
 var static = new Image();
+var boostersShield = new Image();
+var staticShield = new Image();
 boosters.src="images/rocketBoosting.png";
 static.src="images/rocketStatic.png";
+boostersShield.src="images/spaceshipThrustShield.png";
+staticShield.src="images/spaceshipShield.png";
 
 // Populate a global variable for the spaceship
 function InitializeSpaceship() {
@@ -54,10 +58,22 @@ function RenderSpaceship(context) {
     return;
   }
   if (CONTROLS.ship.forward && !(SPACE_SHIP.y < 3)) {
-    context.drawImage(boosters, SPACE_SHIP.x,SPACE_SHIP.y, 50,52);
+    if (SPACE_SHIP.shieldActive){
+      context.drawImage(boostersShield, SPACE_SHIP.x,SPACE_SHIP.y, 50,52);
+    }
+    else{
+      context.drawImage(boosters, SPACE_SHIP.x,SPACE_SHIP.y, 50,52);
+    }
+
   }
   else {
-    context.drawImage(static, SPACE_SHIP.x,SPACE_SHIP.y, 50,40);
+    if (SPACE_SHIP.shieldActive){
+      context.drawImage(staticShield, SPACE_SHIP.x,SPACE_SHIP.y, 50,40);
+    }
+    else{
+      context.drawImage(static, SPACE_SHIP.x,SPACE_SHIP.y, 50,40);
+    }
+
   }
 
 
