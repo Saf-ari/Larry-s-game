@@ -42,14 +42,11 @@ function runGame() {
     RenderSpaceship(context);
     renderBullets(context);
     renderRocks(context);
-<<<<<<< Updated upstream
     context.font = "30px Arial";
     context.fillStyle = "blue";
     context.fillText("Lives:" + SPACE_SHIP.health, 20, 20);
-=======
     renderAliens(context);
     renderLives(context);
->>>>>>> Stashed changes
     if(SPACE_SHIP.health == 0) {
       GAME.started = false;
     }

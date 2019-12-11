@@ -4,12 +4,7 @@ alienImage.src="images/alien.png"
 var rockImage = new Image();
 rockImage.src="images/rock.png"
 
-<<<<<<< Updated upstream:asteroids.js
-function addAlien (type,x,y,health)
-{
-=======
 function addAlien (type,x,y,health){
->>>>>>> Stashed changes:aliens.js
   GAME.aliens.push(new Alien(type,x,y,health));
 }
 
@@ -138,13 +133,9 @@ function checkRockHit() {
       }
     }
 }
-<<<<<<< Updated upstream:asteroids.js
-function checkObstacleCollision() {
-=======
 
 
 function checkAlienHit() {
->>>>>>> Stashed changes:aliens.js
   for(var i = 0; i < GAME.aliens.length; i++) {
   //If the obstacle collides with the player, it is removed from the array and the player
   //loses one (1) health point.
@@ -157,6 +148,7 @@ function checkAlienHit() {
       }
         GAME.aliens.splice(i,1);
         i--;
+
       }
     }
   }
@@ -171,6 +163,7 @@ function checkAlienHit() {
           else {
             GAME.aliens.splice(i,1);
             i--;
+            GAME.score++;
           }
           SPACE_SHIP.bullets.splice(j,1);
           break;
