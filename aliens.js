@@ -213,7 +213,7 @@ function checkObstacleCollision() {
           }
           else {
             var random = Math.random () * 100 + 1;
-            if (random <50){
+            if (random <10){
               spawnPowerUp(GAME.aliens[i].x,GAME.aliens[i].y);
             }
             GAME.score++;
