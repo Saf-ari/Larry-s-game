@@ -5,4 +5,5 @@ function Start() {
     document.cookie = 0;
   }
   InitializeSpaceship();
+  //initializeSounds();
 }
