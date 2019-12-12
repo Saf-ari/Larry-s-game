@@ -9,6 +9,7 @@ staticShield.src="images/spaceshipShield.png";
 
 // Populate a global variable for the spaceship
 function InitializeSpaceship() {
+  initializeSounds();
   addBackground(0,0);
   addBackground(0,-750);
   var canvas = document.getElementById('mainCanvas');

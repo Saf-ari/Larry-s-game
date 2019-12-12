@@ -25,11 +25,13 @@ function handleShipAnimation() {
 function runGame() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
+
   if (GAME.score > document.cookie){
       document.cookie = GAME.score;
     }
   if (GAME.started) {
     // 1 - Reposition the objects
+    backgroundMusic.play();
     handleShipAnimation();
     animateBullets();
     animateBackground();
