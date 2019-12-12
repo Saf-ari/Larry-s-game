@@ -171,6 +171,7 @@ function checkRockHit() {
       SPACE_SHIP.x && GAME.rocks[i].y < SPACE_SHIP.y + 52 &&
       GAME.rocks[i].y + 40 > SPACE_SHIP.y) {
         SPACE_SHIP.health--;
+        SPACE_SHIP.shieldActive = false;
         GAME.rocks.splice(i,1);
         i--;
       }
@@ -192,6 +193,7 @@ function checkAlienHit() {
       SPACE_SHIP.x && GAME.aliens[i].y < SPACE_SHIP.y + 40 &&
       GAME.aliens[i].y + 30 > SPACE_SHIP.y) {
       SPACE_SHIP.health--;
+      SPACE_SHIP.shieldActive = false;
         GAME.aliens.splice(i,1);
         i--;
       }
@@ -234,6 +236,7 @@ function checkAlienHit() {
           } else if (GAME.powerUps[i].type == "health") {
             if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
              SPACE_SHIP.health ++;
+           }
           } else {
              if (!SPACE_SHIP.shieldActive){
                SPACE_SHIP.shieldActive = true;
