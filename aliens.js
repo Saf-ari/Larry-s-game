@@ -11,7 +11,7 @@ var healthImage = new Image();
 healthImage.src = "images/healthPickup.png"
 
 var shieldImage = new Image();
-shieldImage.src = "images/heart.png"
+shieldImage.src = "images/shieldPickup.png"
 
 var fireRateImage = new Image();
 fireRateImage.src = "images/rapidFireBoost.png"
