@@ -9,7 +9,7 @@ var GAME = {
   aliens : [],
   background: [],
   rocks: [],
-  enemyBullets : []
+  enemyBullets : [],
   powerUps: []
 };
 

@@ -25,6 +25,8 @@ function handleShipAnimation() {
 function runGame() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
+  context.font = "30px Arial";
+  context.fillStyle = "blue";
   if (GAME.score > document.cookie){
       document.cookie = GAME.score;
     }
@@ -34,19 +36,17 @@ function runGame() {
     animateBullets();
     animateBackground();
     animateAliens();
-    checkObstacleCollision();
+    checkRockHit();
     checkBulletHit();
-    checkAlienHit();
+    checkObstacleCollision();
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 500, 750);
 
     // 3 - Draw new items
+
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
-  context.font = "30px Arial";
-  context.fillStyle = "blue";
-  context.fillText("Lives:" + SPACE_SHIP.health, 20, 20);
     renderAliens(context);
     renderRocks(context);
     renderLives(context);
