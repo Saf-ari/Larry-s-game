@@ -32,7 +32,9 @@ function runGame() {
   if (GAME.started) {
     // 1 - Reposition the objects
     handleShipAnimation();
+    weaponControl();
     animateBullets();
+    animateLaser();
     animateBackground();
     animateAliens();
     checkObstacleCollision();
@@ -46,6 +48,7 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
+    renderLaser(context);
     renderAliens(context);
     renderRocks(context);
     renderLives(context);

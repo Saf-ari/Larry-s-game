@@ -60,6 +60,9 @@ function RenderSpaceship(context) {
     context.drawImage(static, SPACE_SHIP.x,SPACE_SHIP.y, 50,40);
   }
 
+  //543/50
+  //309/40
+
 
 
   // Move to the point where drawing will start
