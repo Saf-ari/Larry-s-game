@@ -69,7 +69,7 @@ function runGame() {
     context.fillRect(0, 0, 500, 750);
     context.drawImage(title,50,100,400,130);
     context.drawImage(start,100,500,300,50);
-    if (CONTROLS.fire.active) {
+    if (CONTROLS.firing) {
 
       SPACE_SHIP.health = 3;
       GAME.started = true;

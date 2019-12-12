@@ -12,7 +12,7 @@ var CONTROLS = {
   },
   firing : false,
   lastFireTime : [0, 0, 0, 0],
-  weaponKeys : ["Q", "W", "E", "R"],
+  weaponKeys : ["q", "w", "e", "r"],
 };
 
 function weaponSwitchControl(key) {
@@ -40,8 +40,8 @@ document.addEventListener('keydown', function(event) {
     case "ArrowRight":
       CONTROLS.ship.right = true;
       break;
-    case " "
-      CONTROLS.fire = true;
+    case " ":
+      CONTROLS.firing = true;
       break;
     default:
       break;
@@ -63,7 +63,7 @@ document.addEventListener('keyup', function(event) {
       CONTROLS.ship.right = false;
       break;
     case " ":
-      CONTROLS.fire = false;
+      CONTROLS.firing = false;
       break;
     default:
       break;
@@ -80,7 +80,7 @@ function fire(weaponNumber) {
 }
 
 function weaponControl() {
-  for (var i = 2; i <= 3) {
+  for (var i = 2; i <= 3; i++) {
     CONTROLS.lastFireTime[i]--;
   }
 
