@@ -28,7 +28,7 @@ function runGame() {
   context.font = "30px Arial";
   context.fillStyle = "blue";
   if (GAME.score > document.cookie){
-      document.cookie = GAME.score;
+      //document.cookie = GAME.score;
     }
   if (GAME.started) {
     // 1 - Reposition the objects
