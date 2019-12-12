@@ -43,6 +43,7 @@ function PowerUp(type,x,y){
   this.y = y;
 }
 
+
 function Alien (type, x,y, health){
   this.type = type;
   this.x = x;
@@ -82,7 +83,6 @@ function animateAliens() {
       rockTimer = 100;
   }
   rockTimer--;
-
   if(fighterTimer<0){
     if(getRandomInt(10)==4) {
       addAlien("fighter",Math.random()*(GAME.canvas.width -100) + 50, -20, 1);
@@ -97,16 +97,13 @@ function animateAliens() {
     }
   }
   speedyTimer--;
-
   for(var i = 0; i< GAME.rocks.length; i++) {
      GAME.rocks[i].x += GAME.rocks[i].horizontalSpeed;
      GAME.rocks[i].y += GAME.rocks[i].verticalSpeed;
-
     if(GAME.rocks[i].y>GAME.canvas.height|| GAME.rocks[i].x>GAME.canvas.length||GAME.rocks[i].x<-30||GAME.rocks[i]>510) {
       GAME.rocks.splice(i,1);
     }
   }
-
   for (var i = 0; i<GAME.aliens.length; i++){
     GAME.aliens[i].y+=1;
     if(GAME.aliens[i].type == "speedy") {
@@ -130,7 +127,6 @@ function animateAliens() {
     }
   }
 }
-
 
 function spawnPowerUp (x,y){
   var ran = Math.random()*3;
@@ -177,10 +173,10 @@ function checkRockHit() {
         SPACE_SHIP.health--;
         GAME.rocks.splice(i,1);
         i--;
-
       }
     }
 }
+
 
 function renderLives(context){
   for (var i = 0; i < SPACE_SHIP.health; i ++){
@@ -188,8 +184,7 @@ function renderLives(context){
   }
 }
 
-
-function checkObstacleCollision() {
+function checkAlienHit() {
   for(var i = 0; i < GAME.aliens.length; i++) {
   //If the obstacle collides with the player, it is removed from the array and the player
   //loses one (1) health point.
@@ -199,7 +194,6 @@ function checkObstacleCollision() {
       SPACE_SHIP.health--;
         GAME.aliens.splice(i,1);
         i--;
-
       }
     }
   }
@@ -225,6 +219,7 @@ function checkObstacleCollision() {
         }
       }
     }
+
   }
 
   function checkPowerUpHit(){
@@ -240,7 +235,7 @@ function checkObstacleCollision() {
             //add health
           } else {
              //add shield
-             if (health < 3){}
+             if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
               SPACE_SHIP.health ++;
             }
           }
