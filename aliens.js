@@ -231,6 +231,7 @@ function checkAlienHit() {
         GAME.powerUps[i].y + 30 > SPACE_SHIP.y) {
           if (GAME.powerUps[i].type == "fireRate"){
             //shoot faster
+            bulletPickupSound.play();
           } else if (GAME.powerUps[i].type == "health") {
             if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
              SPACE_SHIP.health ++;
@@ -239,8 +240,20 @@ function checkAlienHit() {
                SPACE_SHIP.shieldActive = true;
                SPACE_SHIP.health ++;
              }
-
+           }
+             var k;
+             k = getRandomInt(3);
+             if (k == 0){
+               shieldPickupSound1.play();
+             }
+             else if (k == 1){
+               shieldPickupSound2.play();
+             }
+             else{
+               shieldPickupSound3.play();
+             }
           }
+
           GAME.powerUps.splice(i,1);
           i--;
 
