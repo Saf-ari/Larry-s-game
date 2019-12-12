@@ -19,7 +19,7 @@ function animateBullets() {
    if (CONTROLS.fire.lastFireTime <= 0)
    {
      addBullet(SPACE_SHIP.x + 24.5, SPACE_SHIP.y);
-     CONTROLS.fire.lastFireTime = 25;
+     CONTROLS.fire.lastFireTime = SPACE_SHIP.firingSpeed;
    }
  }
   for(var i = 0; i < SPACE_SHIP.bullets.length ; i++)

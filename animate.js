@@ -26,6 +26,9 @@ function runGame() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
 
+  context.font = "30px Arial";
+  context.fillStyle = "blue";
+
   if (GAME.score > document.cookie){
       document.cookie = GAME.score;
     }
@@ -36,13 +39,15 @@ function runGame() {
     animateBullets();
     animateBackground();
     animateAliens();
-    checkObstacleCollision();
-    checkBulletHit();
     checkRockHit();
+    checkBulletHit();
+    checkAlienHit();
+    checkPowerUpHit();
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 500, 750);
 
     // 3 - Draw new items
+
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
@@ -55,17 +60,21 @@ function runGame() {
       GAME.started = false;
       GAME.score = 0;
     }
-
-
   } else {
     context.fillStyle = "#000000";
     context.fillRect(0, 0, 500, 750);
     context.drawImage(title,50,100,400,130);
     context.drawImage(start,100,500,300,50);
     if (CONTROLS.fire.active) {
+
       SPACE_SHIP.health = 3;
       GAME.started = true;
       GAME.rocks = [];
+      GAME.aliens = [];
+      SPACE_SHIP.x = 200;
+      SPACE_SHIP.y = 500;
+      SPACE_SHIP.bullets = [];
+      GAME.score = 0;
     }
   }
   window.requestAnimationFrame(runGame);
