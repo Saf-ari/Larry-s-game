@@ -232,12 +232,14 @@ function checkAlienHit() {
           if (GAME.powerUps[i].type == "fireRate"){
             //shoot faster
           } else if (GAME.powerUps[i].type == "health") {
-            //add health
+            if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
+             SPACE_SHIP.health ++;
           } else {
-             //add shield
-             if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
-              SPACE_SHIP.health ++;
-            }
+             if (!SPACE_SHIP.shieldActive){
+               SPACE_SHIP.shieldActive = true;
+               SPACE_SHIP.health ++;
+             }
+
           }
           GAME.powerUps.splice(i,1);
           i--;
