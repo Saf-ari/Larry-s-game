@@ -34,7 +34,6 @@ break;
       break;
       case " ":
       CONTROLS.fire.active = true;
-
 /*    case "ArrowLeft":
       CONTROLS.ship.rotateCounterClockwise = true;
       break;

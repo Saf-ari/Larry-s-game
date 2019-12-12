@@ -38,7 +38,8 @@ function runGame() {
     animateAliens();
     checkRockHit();
     checkBulletHit();
-    checkObstacleCollision();
+    checkAlienHit();
+    checkPowerUpHit();
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 500, 750);
 
@@ -62,9 +63,15 @@ function runGame() {
     context.drawImage(title,50,100,400,130);
     context.drawImage(start,100,500,300,50);
     if (CONTROLS.fire.active) {
+
       SPACE_SHIP.health = 3;
       GAME.started = true;
       GAME.rocks = [];
+      GAME.aliens = [];
+      SPACE_SHIP.x = 200;
+      SPACE_SHIP.y = 500;
+      SPACE_SHIP.bullets = [];
+      GAME.score = 0;
     }
   }
   window.requestAnimationFrame(runGame);
