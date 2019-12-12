@@ -11,7 +11,7 @@ var healthImage = new Image();
 healthImage.src = "images/healthPickup.png"
 
 var shieldImage = new Image();
-shieldImage.src = "images/heart.png"
+shieldImage.src = "images/shieldPickup.png"
 
 var fireRateImage = new Image();
 fireRateImage.src = "images/rapidFireBoost.png"
@@ -234,6 +234,7 @@ function checkAlienHit() {
           } else if (GAME.powerUps[i].type == "health") {
             if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
              SPACE_SHIP.health ++;
+           }
           } else {
              if (!SPACE_SHIP.shieldActive){
                SPACE_SHIP.shieldActive = true;
