@@ -3,8 +3,8 @@ var LASER = {
   images : [new Image(), new Image(), new Image()],
   x : 0,
   y : 0,
-  w : 50,
-  h : 500,
+  w : 40,
+  h : 750,
   duration : 200
 }
 LASER.images[0].src = "images/newLaser.png";
@@ -21,6 +21,6 @@ function animateLaser() {
 
 function renderLaser(context) {
   if (LASER.active) {
-    context.drawImage(LASER.images[0], LASER.x, LASER.y, LASER.w, LASER.h);
+    context.drawImage(LASER.images[0], LASER.x+5, LASER.y, LASER.w, LASER.h);
   }
 }
