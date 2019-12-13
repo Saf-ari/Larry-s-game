@@ -238,11 +238,12 @@ function checkAlienHit() {
             if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
              SPACE_SHIP.health ++;
            }
+           healthPickupSound.play();
           } else {
              if (!SPACE_SHIP.shieldActive){
                SPACE_SHIP.shieldActive = true;
                SPACE_SHIP.health ++;
-             }
+
            }
              var k;
              k = getRandomInt(3);
