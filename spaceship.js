@@ -73,6 +73,9 @@ function RenderSpaceship(context) {
 
   }
 
+  //543/50
+  //309/40
+
 
 
   // Move to the point where drawing will start

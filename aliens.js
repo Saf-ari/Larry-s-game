@@ -236,7 +236,7 @@ function checkAlienHit() {
             bulletPickupSound.play();
           } else if (GAME.powerUps[i].type == "health") {
             if ((SPACE_SHIP.health < 3 && SPACE_SHIP.shieldActive == false) || (SPACE_SHIP.health< 4 && SPACE_SHIP.shieldActive)){
-             SPACE_SHIP.health ++;
+             SPACE_SHIP.health = 3 + SPACE_SHIP.shieldActive ? 1 : 0;
            }
            healthPickupSound.play();
           } else {

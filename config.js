@@ -10,7 +10,8 @@ var GAME = {
   background: [],
   rocks: [],
   enemyBullets : [],
-  powerUps: []
+  powerUps: [],
+  weaponNames : ["", "Rocket Launcher", "Laser Blaster", "Rail Gun"]
 };
 
 var SPACE_SHIP = {
@@ -21,7 +22,8 @@ var SPACE_SHIP = {
   speed : 0,
   health : 3,
   shieldActive : false,
-  firingSpeed : 25
+  firingSpeed : [0,0,1000,25],
+  currentWeapon : 3
 };
 
 var NEW_OBJECT = {

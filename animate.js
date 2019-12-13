@@ -1,7 +1,9 @@
   var title = new Image();
-title.src="images/title.png"
+title.src="images/title.png";
 var start = new Image();
-start.src="images/start.png"
+start.src="images/start.png";
+
+
 
 
 function handleShipAnimation() {
@@ -21,7 +23,6 @@ function handleShipAnimation() {
 }
 
 
-
 function runGame() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
@@ -36,7 +37,9 @@ function runGame() {
     // 1 - Reposition the objects
     backgroundMusic.play();
     handleShipAnimation();
+    weaponControl();
     animateBullets();
+    animateLaser();
     animateBackground();
     animateAliens();
     checkRockHit();
@@ -51,6 +54,7 @@ function runGame() {
     RenderBackground(context);
     RenderSpaceship(context);
     renderBullets(context);
+    renderLaser(context);
     renderAliens(context);
     renderRocks(context);
     renderLives(context);
@@ -65,7 +69,7 @@ function runGame() {
     context.fillRect(0, 0, 500, 750);
     context.drawImage(title,50,100,400,130);
     context.drawImage(start,100,500,300,50);
-    if (CONTROLS.fire.active) {
+    if (CONTROLS.firing) {
 
       SPACE_SHIP.health = 3;
       GAME.started = true;
