@@ -200,6 +200,45 @@ function checkAlienHit() {
     }
   }
 
+  function checkLaserHitAlien() {
+    for(var i = 0; i < GAME.aliens.length; i++) {
+    //If the obstacle collides with the player, it is removed from the array and the player
+    //loses one (1) health point.
+      if (GAME.aliens[i].x < LASER.x + 40 && GAME.aliens[i].x + 30 >
+        LASER.x && GAME.aliens[i].y < SPACE_SHIP.y + 40 ) {
+            var random = Math.random () * 100 + 1;
+            if (random <10){
+              spawnPowerUp(GAME.aliens[i].x,GAME.aliens[i].y);
+            }
+            GAME.score++;
+            GAME.aliens.splice(i,1);
+            i--;
+          }
+
+
+
+        }
+      }
+
+function checkLaserHitRock(){
+if (LASER.active){
+  for(var i = 0; i < GAME.rocks.length; i++) {
+  //If the obstacle collides with the player, it is removed from the array and the player
+  //loses one (1) health point.
+    if (GAME.rocks[i].x < LASER.x + 40 && GAME.rocks[i].x + 30 >
+      LASER.x && GAME.rocks[i].y < SPACE_SHIP.y + 40 ) {
+
+          GAME.rocks.splice(i,1);
+          i--;
+        }
+      }
+}
+
+}
+
+
+
+
   function checkBulletHit() {
     for(var i = 0; i < GAME.aliens.length; i++) {
       for(var j = 0; j < SPACE_SHIP.bullets.length; j++) {

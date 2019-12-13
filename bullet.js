@@ -4,6 +4,7 @@ bulletImage.src="images/bullet.png"
 function addBullet (x,y)
 {
   SPACE_SHIP.bullets.push(new Bullet(x,y));
+  bulletSound.play();
 }
 
 function Bullet (x,y)
@@ -27,5 +28,6 @@ function renderBullets(context) {
   for(var i = 0; i < SPACE_SHIP.bullets.length; i++)
   {
     context.drawImage(bulletImage, SPACE_SHIP.bullets[i].x, SPACE_SHIP.bullets[i].y, 2, 8);
+    
   }
 }

@@ -13,8 +13,10 @@ function animateLaser() {
   if (LASER.active) {
     LASER.x = SPACE_SHIP.x;
     LASER.y = SPACE_SHIP.y - LASER.h;
+    laserSound.play();
     if (CONTROLS.lastFireTime[2] < SPACE_SHIP.firingSpeed[2] - LASER.duration) {
       LASER.active = false;
+      laserSound.stop();
     }
   }
 }
@@ -22,5 +24,7 @@ function animateLaser() {
 function renderLaser(context) {
   if (LASER.active) {
     context.drawImage(LASER.images[0], LASER.x+5, LASER.y, LASER.w, LASER.h);
+
   }
+
 }

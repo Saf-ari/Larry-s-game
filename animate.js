@@ -45,7 +45,10 @@ function runGame() {
     checkRockHit();
     checkBulletHit();
     checkAlienHit();
+    checkLaserHitAlien();
+    checkLaserHitRock();
     checkPowerUpHit();
+    
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 500, 750);
 
