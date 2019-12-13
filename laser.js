@@ -7,7 +7,7 @@ var LASER = {
   h : 500,
   duration : 200
 }
-LASER.images[0].src = "images/laser1.png";
+LASER.images[0].src = "images/newLaser.png";
 
 function animateLaser() {
   if (LASER.active) {
