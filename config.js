@@ -26,7 +26,15 @@ var SPACE_SHIP = {
   currentWeapon : 3
 };
 
-var NEW_OBJECT = {
-  x : 0,
-  y : 0
+var BOSS = {
+  active : false,
+  bullets : [],
+  x : 200,
+  y : 50,
+  w : 70,
+  h : 70,
+  speed : 3,
+  health : 3,
+  image : new Image(),
+  firingSpeed : 10
 };

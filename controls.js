@@ -73,7 +73,7 @@ document.addEventListener('keyup', function(event) {
 function fire(weaponNumber) {
   if (weaponNumber == 3) {
     LASER.active = false;
-    addBullet(SPACE_SHIP.x + 24.5, SPACE_SHIP.y);
+    addBullet(SPACE_SHIP.bullets, SPACE_SHIP.x + 24.5, SPACE_SHIP.y);
   } else if (weaponNumber == 2) {
     LASER.active = true;
   }
